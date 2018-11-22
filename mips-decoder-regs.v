@@ -81,60 +81,42 @@ module decoderAndRegisters(instruction, operand1, operand2);
 
     always @ (instruction) begin
         case(rs)
-            16:operand1=s0;
-            17:operand1=s1;
-            18:operand1=s2;
-            19:operand1=s3;
-            20:operand1=s4;
-            21:operand1=s5;
-            22:operand1=s6;
-            23:operand1=s7;
-            8:operand1=t0;
-            9:operand1=t1;
-            10:operand1=t2;
-            11:operand1=t3;
-            12:operand1=t4;
-            13:operand1=t5;
-            14:operand1=t6;
-            15:operand1=t7;
+            16:operand1 = S[0];
+            17:operand1 = S[1];
+            18:operand1 = S[2];
+            19:operand1 = S[3];
+            20:operand1 = S[4];
+            21:operand1 = S[5];
+            22:operand1 = S[6];
+            23:operand1 = S[7];
+            8:operand1 = T[0];
+            9:operand1 = T[1];
+            10:operand1 = T[2];
+            11:operand1 = T[3];
+            12:operand1 = T[4];
+            13:operand1 = T[5];
+            14:operand1 = T[6];
+            15:operand1 = T[7];
         endcase
 
         case(rt)
-            16:operand2=s0;
-            17:operand2=s1;
-            18:operand2=s2;
-            19:operand2=s3;
-            20:operand2=s4;
-            21:operand2=s5;
-            22:operand2=s6;
-            23:operand2=s7;
-            8:operand2=t0;
-            9:operand2=t1;
-            10:operand2=t2;
-            11:operand2=t3;
-            12:operand2=t4;
-            13:operand2=t5;
-            14:operand2=t6;
-            15:operand2=t7;
+            16:operand2 = S[0];
+            17:operand2 = S[1];
+            18:operand2 = S[2];
+            19:operand2 = S[3];
+            20:operand2 = S[4];
+            21:operand2 = S[5];
+            22:operand2 = S[6];
+            23:operand2 = S[7];
+            8:operand2 = T[0];
+            9:operand2 = T[1];
+            10:operand2 = T[2];
+            11:operand2 = T[3];
+            12:operand2 = T[4];
+            13:operand2 = T[5];
+            14:operand2 = T[6];
+            15:operand2 = T[7];
         endcase
 
-        case(rd)
-            16:operand2=s0;
-            17:operand2=s1;
-            18:operand2=s2;
-            19:operand2=s3;
-            20:operand2=s4;
-            21:operand2=s5;
-            22:operand2=s6;
-            23:operand2=s7;
-            8:operand2=t0;
-            9:operand2=t1;
-            10:operand2=t2;
-            11:operand2=t3;
-            12:operand2=t4;
-            13:operand2=t5;
-            14:operand2=t6;
-            15:operand2=t7;
-        endcase
     end
 endmodule
