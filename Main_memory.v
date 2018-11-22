@@ -206,4 +206,7 @@ always@(*)
 			//store t6 302(s0)
 			16'd236 : data_out=32'b101011_01110_10000_0000000100101110;
 			//
-			
+			default : data_out=32'b0;
+		endcase
+	end
+endmodule
