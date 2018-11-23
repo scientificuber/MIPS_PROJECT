@@ -1,7 +1,7 @@
 module MainMemory(memread,memwrite,address,data_in,data_out);
 input memread;
 input memwrite;
-input [16:0]address;
+input [31:0]address;
 input [31:0]data_in;
 output reg [31:0]data_out;
 reg [31:0] matrix1[50:0];
@@ -52,7 +52,7 @@ begin
 		32'b0000001000011000 : data_out=matrix1[6];
 		32'b0000001000011100 : data_out=matrix1[7];
 		32'b0000001000100000 : data_out=matrix1[8];
-		
+
 		32'b0000001100000000 : data_out=matrix2[0];
 		32'b0000001100000100 : data_out=matrix2[1];
 		32'b0000001100001000 : data_out=matrix2[2];
@@ -80,7 +80,7 @@ begin
 		default : data_out=data_in;
 	endcase
 	end
-	
+
 end
 
 endmodule
