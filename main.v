@@ -19,7 +19,7 @@ aluControlUnit uut6(Aluout,instruction[5:0],c_line);
 aluMain uut7(c_line,out1,b,out_alu);
 MainMemory uut8(MemR,MemW,out_alu,out2,data_out_mem,d11,d12,d13,d21,d22,d23,d31,d32,d33);
 mux2 uut9(out_alu,data_out_mem,MemToReg,write_back);
-Registers uut10(instruction, 1'b1,dest,write_back,dummy);
+Registers uut1(instruction, 1'b1,dest,write_back,dummy);
 always @ ( * ) begin
   $display("pc = %b , instruction = %b , Aluop=%b , Aluout = %b , MemR = %b , MemW = %b , RegW = %b,\nMemToReg = %b , alusrc = %b, regdest = %b , mux1.data1 = %b, mux2.data2 = %b,\ndest = %b , address1 = %b , address2 = %b , out1 = %b ,\nout2 = %b ,signExtended = %b , b = %b ,c_line = %b,\nout_alu = %b, data_out_mem = %b, write_back = %b, dummy = %b \n",pc,instruction,instruction[31:26],Aluout,MemR,
           MemW,RegW,MemToReg,alusrc,regdest,instruction[25:21],instruction[15:11],dest,instruction[20:16],instruction[25:21],

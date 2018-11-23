@@ -9,7 +9,7 @@ module decoder(instruction, address1,address2,dest,regwrite,write_data,out1,out2
     Registers uut1(instruction, regwrite,address1,write_data,dataOut1);
     assign out1=dataOut1;
 
-    Registers uut2(instruction, regwrite,address2,write_data,dataOut2);
+    Registers uut1(instruction, regwrite,address2,write_data,dataOut2);
     assign out2=dataOut2;
     always @ (instruction) begin
         // $display("regWrite = %d", regwrite);
