@@ -3,7 +3,7 @@ input memread;
 input memwrite;
 input [16:0]address;
 input [31:0]data_in;
-output [31:0]data_out;
+output reg [31:0]data_out;
 reg [31:0] matrix1[50:0];
 reg [31:0] matrix2[50:0];
 reg [31:0] matrix3[50:0];
@@ -64,6 +64,7 @@ begin
 		32'b0000001100100000 : data_out=matrix2[8];
 		default : data_out=32'd0;
 	endcase
+	end
 	else if(memwrite==1 && memread==0)
 	begin
 		case(address)
@@ -79,7 +80,7 @@ begin
 		default : data_out=data_in;
 	endcase
 	end
-	end
+	
 end
 
 endmodule
