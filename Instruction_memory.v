@@ -203,4 +203,7 @@ initial begin
 		//
 end
 assign data_out=memory[address];
+initial begin
+	$display("%d",data_out);
+end
 endmodule

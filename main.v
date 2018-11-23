@@ -19,5 +19,7 @@ aluMain uut7(c_line,out1,b,out_alu);
 MainMemory uut8(MemR,MemW,out_alu,b,data_out_mem,d11,d12,d13,d21,d22,d23,d31,d32,d33);
 mux2 uut9(out_alu,data_out_mem,MemToReg,write_back);
 Registers uut10(1'b1,dest,write_back,dummy);
-
+initial begin
+$display("%d ",instruction);
+end
 endmodule

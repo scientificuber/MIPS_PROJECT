@@ -1,9 +1,10 @@
 module MainMemory(memread,memwrite,address,data_in,data_out,d11,d12,d13,d21,d22,d23,d31,d32,d33);
 input memread;
 input memwrite;
-input [16:0]address;
+input [31:0]address;
 input [31:0]data_in;
-output reg [31:0]data_out, d11, d12, d13, d21, d22, d23, d31, d32, d33;
+output reg [31:0]data_out;
+output [31:0] d11, d12, d13, d21, d22, d23, d31, d32, d33;
 reg [31:0] matrix1[50:0];
 reg [31:0] matrix2[50:0];
 reg [31:0] matrix3[50:0];
@@ -80,7 +81,6 @@ begin
 		default : data_out=data_in;
 	endcase
 	end
-
 end
 assign d11 = matrix3[0];
 assign d12 = matrix3[1];
@@ -90,6 +90,9 @@ assign d22 = matrix3[4];
 assign d23 = matrix3[5];
 assign d31 = matrix3[6];
 assign d32 = matrix3[7];
-assign d33 = matrix3[8];
-
+assign d33 = matrix3[8];/*
+initial begin
+$display("%d",data_in);
+//$display("%d %d %d %d %d %d",d11,d12,d13,d21,d22,d23);
+end*/
 endmodule
