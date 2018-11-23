@@ -6,7 +6,7 @@ input [31:0]data_in;
 output [31:0]data_out;
 reg [31:0] matrix1[50:0];
 reg [31:0] matrix2[50:0];
-reg [31:0] output_matrix[50:0];
+reg [31:0] matrix3[50:0];
 initial begin
 	matrix1[0]=32'd1;
 	matrix1[1]=32'd2;
@@ -20,11 +20,11 @@ initial begin
 
 	matrix2[0]=32'd1;
 	matrix2[1]=32'd0;
-	matrix2[2]=32'd1;
+	matrix2[2]=32'd0;
 	matrix2[3]=32'd0;
 	matrix2[4]=32'd1;
 	matrix2[5]=32'd0;
-	matrix2[6]=32'd1;
+	matrix2[6]=32'd0;
 	matrix2[7]=32'd0;
 	matrix2[8]=32'd1;
 
@@ -38,4 +38,48 @@ initial begin
 	matrix3[7]=32'd0;
 	matrix3[8]=32'd0;*/
 	end
+always@(*)
+begin
+	if(memread==1 && memwrite==0)
+	begin
+	case(address)
+		32'b0000001000000000 : data_out=matrix1[0];
+		32'b0000001000000100 : data_out=matrix1[1];
+		32'b0000001000001000 : data_out=matrix1[2];
+		32'b0000001000001100 : data_out=matrix1[3];
+		32'b0000001000010000 : data_out=matrix1[4];
+		32'b0000001000010100 : data_out=matrix1[5];
+		32'b0000001000011000 : data_out=matrix1[6];
+		32'b0000001000011100 : data_out=matrix1[7];
+		32'b0000001000100000 : data_out=matrix1[8];
+		
+		32'b0000001100000000 : data_out=matrix2[0];
+		32'b0000001100000100 : data_out=matrix2[1];
+		32'b0000001100001000 : data_out=matrix2[2];
+		32'b0000001100001100 : data_out=matrix2[3];
+		32'b0000001100010000 : data_out=matrix2[4];
+		32'b0000001100010100 : data_out=matrix2[5];
+		32'b0000001100011000 : data_out=matrix2[6];
+		32'b0000001100011100 : data_out=matrix2[7];
+		32'b0000001100100000 : data_out=matrix2[8];
+		default : data_out=32'd0;
+	endcase
+	else if(memwrite==1 && memread==0)
+	begin
+		case(address)
+		32'b0000000100000000 : matrix3[0]=data_in;
+		32'b0000000100000100 : matrix3[1]=data_in;
+		32'b0000000100001000 : matrix3[2]=data_in;
+		32'b0000000100001100 : matrix3[3]=data_in;
+		32'b0000000100010000 : matrix3[4]=data_in;
+		32'b0000000100010100 : matrix3[5]=data_in;
+		32'b0000000100011000 : matrix3[6]=data_in;
+		32'b0000000100011100 : matrix3[7]=data_in;
+		32'b0000000100100000 : matrix3[8]=data_in;
+		default : data_out=data_in;
+	endcase
+	end
+	end
+end
+
 endmodule
