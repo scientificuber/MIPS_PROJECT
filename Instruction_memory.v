@@ -1,8 +1,9 @@
 module instruction_memory(address,data_out);
 input [31:0]address;
-output [31:0]data_out;
+output reg [31:0] data_out;
 reg [31:0]memory[360:0];
 initial begin
+
 		//load word t0 512(s0)
 		memory[0]=32'b100011_01000_10000_0000001000000000;
 		//load word t1 768(s0)
@@ -29,6 +30,7 @@ initial begin
 		//store word t6 256(s0)
 		memory[44]=33'b101011_01110_10000_0000000100000000;
 		//
+		// /*
 		//load word t1 780(s0)
 		memory[48]=32'b100011_01001_10000_0000001100001100;
 		//load word t3 784(s0)
@@ -92,8 +94,8 @@ initial begin
 		//add t6 t6 s5
 		memory[160]=32'b000000_01110_01110_10101_00000_100000;
 		//
-		//store word t6 270(s0)
-		memory[164]=32'b101011_01110_10000_0000000100001110;
+		//store word t6 268(s0)
+		memory[164]=32'b101011_01110_10000_0000000100001100;
 		//
 		//load t1 780(s0)
 		memory[168]=32'b100011_01001_10000_0000001100001100;
@@ -112,8 +114,8 @@ initial begin
 		//add t6 t6 s5
 		memory[196]=32'b000000_01110_01110_10101_00000_100000;
 		//
-		//store word t6 274(s0)
-		memory[200]=32'b101011_01110_10000_0000000100010010;
+		//store word t6 272(s0)
+		memory[200]=32'b101011_01110_10000_0000000100010000;
 		//
 		//load t1 792(s0)
 		memory[204]=32'b100011_01001_10000_0000001100011000;
@@ -132,8 +134,8 @@ initial begin
 		//add t6 t6 s5
 		memory[232]=32'b000000_01110_01110_10101_00000_100000;
 		//
-		//store word t6 280(s0)
-		memory[236]=32'b101011_01110_10000_0000000100011000;
+		//store word t6 276(s0)
+		memory[236]=32'b101011_01110_10000_0000000100010100;
 		//
 		//load t0 536(s0)
 		memory[240]=32'b100011_01000_10000_0000001000011000;
@@ -158,8 +160,8 @@ initial begin
 		//add t6 t6 s5
 		memory[280]=32'b000000_01110_01110_10101_00000_100000;
 		//
-		//store word t6 294(s0)
-		memory[284]=32'b101011_01110_10000_0000000100100110;
+		//store word t6 280(s0)
+		memory[284]=32'b101011_01110_10000_0000000100011000;
 		//
 		//load t1 780(s0)
 		memory[288]=32'b100011_01001_10000_0000001100001100;
@@ -178,8 +180,8 @@ initial begin
 		//add t6 t6 s5
 		memory[316]=32'b000000_01110_01110_10101_00000_100000;
 		//
-		//store t6 298(s0)
-		memory[320]=32'b101011_01110_10000_0000000100101010;
+		//store t6 284(s0)
+		memory[320]=32'b101011_01110_10000_0000000100011100;
 		//
 		//load t1 792(s0)
 		memory[324]=32'b100011_01001_10000_0000001100011000;
@@ -198,12 +200,14 @@ initial begin
 		//add t6 t6 s5
 		memory[352]=32'b000000_01110_01110_10101_00000_100000;
 		//
-		//store t6 302(s0)
-		memory[356]=32'b101011_01110_10000_0000000100101110;
+		//store t6 288(s0)
+		memory[356]=32'b101011_01110_10000_0000000100100000;
 		//
+		// */
 end
-assign data_out=memory[address];
-initial begin
-	$display("%d",data_out);
+// assign data_out=memory[address];
+always @ ( * ) begin
+	data_out = memory[address];
+	$display("%b", data_out);
 end
 endmodule

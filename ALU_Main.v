@@ -9,5 +9,6 @@ module aluMain(controlLines, a, b, out);
             4'b0011 : out = a - b;
             4'b0100 : out = a * b;
         endcase
+        $display("ALUOUT, b = %d, %d", out, b);
     end
 endmodule

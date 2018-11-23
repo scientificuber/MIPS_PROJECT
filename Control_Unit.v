@@ -1,11 +1,12 @@
-module controlUnit(opcode, ALUout, MemR, MemW, RegW, MemToReg, aluSrc, regDest);
+module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluSrc, regDest);
     input [5:0] opcode;
-
+    input [31:0] instruction;
     output reg [1:0] ALUout;
     output reg MemR, MemW, RegW, MemToReg, aluSrc, regDest;
 
-    always @ (*)
+    always @ (instruction)
         begin
+            $display("opcode: %b", opcode);
             case(opcode)
                 6'b000000 : begin
                                 ALUout = 2'b10;

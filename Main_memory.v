@@ -4,32 +4,14 @@ input memwrite;
 input [31:0]address;
 input [31:0]data_in;
 output reg [31:0]data_out;
-output [31:0] d11, d12, d13, d21, d22, d23, d31, d32, d33;
-reg [31:0] matrix1[50:0];
-reg [31:0] matrix2[50:0];
-reg [31:0] matrix3[50:0];
-initial begin
-	matrix1[0]=32'd1;
-	matrix1[1]=32'd2;
-	matrix1[2]=32'd3;
-	matrix1[3]=32'd4;
-	matrix1[4]=32'd5;
-	matrix1[5]=32'd6;
-	matrix1[6]=32'd7;
-	matrix1[7]=32'd8;
-	matrix1[8]=32'd9;
+output reg [31:0] d11, d12, d13, d21, d22, d23, d31, d32, d33;
+reg [31:0] matrix1[8:0];
+reg [31:0] matrix2[8:0];
+reg [31:0] matrix3[8:0];
+/*initial begin
 
-	matrix2[0]=32'd1;
-	matrix2[1]=32'd0;
-	matrix2[2]=32'd0;
-	matrix2[3]=32'd0;
-	matrix2[4]=32'd1;
-	matrix2[5]=32'd0;
-	matrix2[6]=32'd0;
-	matrix2[7]=32'd0;
-	matrix2[8]=32'd1;
 
-	/*matrix3[0]=32'd0;
+	matrix3[0]=32'd0;
 	matrix3[1]=32'd0;
 	matrix3[2]=32'd0;
 	matrix3[3]=32'd0;
@@ -37,10 +19,29 @@ initial begin
 	matrix3[5]=32'd0;
 	matrix3[6]=32'd0;
 	matrix3[7]=32'd0;
-	matrix3[8]=32'd0;*/
-	end
+	matrix3[8]=32'd0;
+	end*/
 always@(*)
 begin
+matrix1[0]=32'd1;
+matrix1[1]=32'd2;
+matrix1[2]=32'd3;
+matrix1[3]=32'd4;
+matrix1[4]=32'd5;
+matrix1[5]=32'd6;
+matrix1[6]=32'd7;
+matrix1[7]=32'd8;
+matrix1[8]=32'd9;
+
+matrix2[0]=32'd1;
+matrix2[1]=32'd0;
+matrix2[2]=32'd0;
+matrix2[3]=32'd0;
+matrix2[4]=32'd1;
+matrix2[5]=32'd0;
+matrix2[6]=32'd0;
+matrix2[7]=32'd0;
+matrix2[8]=32'd1;
 	if(memread==1 && memwrite==0)
 	begin
 	case(address)
@@ -81,16 +82,17 @@ begin
 		default : data_out=data_in;
 	endcase
 	end
+	d11 = matrix3[0];
+	d12 = matrix3[1];
+	d13 = matrix3[2];
+	d21 = matrix3[3];
+	d22 = matrix3[4];
+	d23 = matrix3[5];
+	d31 = matrix3[6];
+	d32 = matrix3[7];
+	d33 = matrix3[8];
 end
-assign d11 = matrix3[0];
-assign d12 = matrix3[1];
-assign d13 = matrix3[2];
-assign d21 = matrix3[3];
-assign d22 = matrix3[4];
-assign d23 = matrix3[5];
-assign d31 = matrix3[6];
-assign d32 = matrix3[7];
-assign d33 = matrix3[8];/*
+/*
 initial begin
 $display("%d",data_in);
 //$display("%d %d %d %d %d %d",d11,d12,d13,d21,d22,d23);
