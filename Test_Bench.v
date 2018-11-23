@@ -19,7 +19,7 @@ module TB_3x3_Multiplication;
 
     initial begin
         clk = 0; pc = 0; #10;
-        repeat(200) #10 clk = ~clk;
+        repeat(500) #10 clk = ~clk;
         $display("%d \t%d \t%d\n%d \t%d \t%d\n%d \t%d \t%d\n", d11, d12, d13, d21, d22, d23, d31, d32, d33);
     end
 
