@@ -1,5 +1,5 @@
 module instruction_memory(address,data_out);
-input [16:0]address;
+input [31:0]address;
 output reg [31:0]data_out;
 initial begin
 	case(address)
