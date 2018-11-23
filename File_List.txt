@@ -1,0 +1,11 @@
+ALU_Control_Unit.v
+ALU_Main.v
+Control_Unit.v
+Decoder.v
+Instruction_memory.v
+Main_memory.v
+main.v
+Mux1.v
+Mux2.v
+Register.v
+Test_Bench.v
