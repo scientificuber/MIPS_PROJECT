@@ -10,11 +10,10 @@ module decoder(instruction, address1,address2,dest,regwrite,write_data,out1,out2
     assign out1=dataOut1;
 
     Registers uut2(instruction, regwrite,address2,write_data,dataOut2);
-
     assign out2=dataOut2;
     always @ (instruction) begin
-        $display("regWrite = %d", regwrite);
-        $display("out1, out2 = %b,%b", out1, out2);
+        // $display("regWrite = %d", regwrite);
+        // $display("out1, out2 = %b,%b", out1, out2);
     end
 
 endmodule

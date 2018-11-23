@@ -1,6 +1,6 @@
 module instruction_memory(address,data_out);
 input [31:0]address;
-output reg [31:0] data_out;
+output  [31:0] data_out;
 reg [31:0]memory[360:0];
 initial begin
 
@@ -205,9 +205,9 @@ initial begin
 		//
 		// */
 end
-// assign data_out=memory[address];
-always @ ( * ) begin
-	data_out = memory[address];
-	$display("%b", data_out);
-end
+assign data_out=memory[address];
+// always @ ( * ) begin
+// 	data_out = memory[address];
+// 	$display("%b", data_out);
+// end
 endmodule

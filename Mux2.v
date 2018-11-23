@@ -7,6 +7,6 @@ always @ (*) begin
         0 : out = data1;
         1 : out = data2;
     endcase
-    $display("mux2\nd1, d2 = %d, %d\nout = %d", data1, data2, out);
+    //$display("mux2\nd1, d2 = %d, %d\nout = %d", data1, data2, out);
 end
 endmodule
