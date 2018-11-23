@@ -125,6 +125,12 @@ module decoderAndRegisters(instruction, s0, s1, s2, s3, s4, s5, s6, s7, t0, t1, 
             14:operand2 = T[6];
             15:operand2 = T[7];
         endcase
+    end
 
+    always @ (aluop) begin
+        case(aluop)
+            2'b00 : operand2 = addImm;
+            default : operand2 = operand2;
+        endcase
     end
 endmodule
