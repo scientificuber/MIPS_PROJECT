@@ -1,91 +1,94 @@
-module Registers(instruction, regWrite, regAddress, dataIn, dataOut);
+module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut2);
     input regWrite;
-    input [4:0] regAddress;
-    input [31:0] dataIn, instruction;
-    output reg [31:0] dataOut;
-
-    reg [31:0] s0,s1,s2,s3,s4,s5,s6,s7;
-    reg [31:0] t0,t1,t2,t3,t4,t5,t6,t7;
-
-    // initial begin
-    //     s0 = 32'b0;
-    //     // R[1] = 32'b0;
-    //     // R[2] = 32'b0;
-    //     // R[3] = 32'b0;
-    //     // R[4] = 32'b0;
-    //     // R[5] = 32'b0;
-    //     // R[6] = 32'b0;
-    //     // R[7] = 32'b0;
-    //     // R[8] = 32'b0;
-    //     // R[9] = 32'b0;
-    //     // R[10] = 32'b0;
-    //     // R[11] = 32'b0;
-    //     // R[12] = 32'b0;
-    //     // R[13] = 32'b0;
-    //     // R[14] = 32'b0;
-    //     // R[15] = 32'b0;
-    // end
-
-    always @ (*) begin
-        s0=32'b0;
-        if(regWrite==0)
-          case(regAddress)
-          5'b10000 : s0=32'b0;
-          5'b01000 : dataOut=t0;
-          5'b10001 : dataOut=s1;
-          5'b01001 : dataOut=t1;
-          5'b10010 : dataOut=s2;
-          5'b01010 : dataOut=t2;
-          5'b10011 : dataOut=s3;
-          5'b01011 : dataOut=t3;
-          5'b10100 : dataOut=s4;
-          5'b01100 : dataOut=t4;
-          5'b10101 : dataOut=s5;
-          5'b01101 : dataOut=t5;
-          5'b10110 : dataOut=s6;
-          5'b01110 : dataOut=t6;
-          5'b10111 : dataOut=s7;
-          5'b01111 : dataOut=t7;
-          endcase
-        else  begin
-                    /*
-                    casex(dataIn)
-                        32'b0 : begin
-                            R[regAddress - 8] = R[regAddress - 8];
-                            // $display("#regAddress = %d", regAddress);
-                            end
-                        default : R[regAddress - 8] = dataIn;
-                    endcase
-                    // dataOut = dataIn;
-                    */
-                    if(^dataIn === 1'bx)
-                    begin
-                    $display(":avthalpo");
-                    end
-                    else
-                    begin
-                    case(regAddress)
-                              5'b10000 : s0=32'b0;
-                              5'b01000 : t0=dataIn;
-                              5'b10001 : s1=dataIn;
-                              5'b01001 : t1=dataIn;
-                              5'b10010 : s2=dataIn;
-                              5'b01010 : t2=dataIn;
-                              5'b10011 : s3=dataIn;
-                              5'b01011 : t3=dataIn;
-                              5'b10100 : s4=dataIn;
-                              5'b01100 : t4=dataIn;
-                              5'b10101 : s5=dataIn;
-                              5'b01101 : t5=dataIn;
-                              5'b10110 : s6=dataIn;
-                              5'b01110 : t6=dataIn;
-                              5'b10111 : s7=dataIn;
-                              5'b01111 : t7=dataIn;
-
-                  endcase
-                  end
-                end
-                $display("\n\n Registers %b %b %b %b %b %b %b %b %b %b %b %b %b %b\n\n",s0,s1,s2,s3,s4,s5,s6,s7,t0,t1,t2,t3,t4,t5,t6,t7);
+    input [4:0] address1,address2,address3;
+    input [31:0] write_back;
+    output reg [31:0] dataOut1;
+    output reg [31:0] dataOut2;
+    reg [31:0] registers[23:0];
+    initial begin
+      registers[8]=32'b0;
+      registers[9]=32'b0;
+      registers[10]=32'b0;
+      registers[11]=32'b0;
+      registers[12]=32'b0;
+      registers[13]=32'b0;
+      registers[14]=32'b0;
+      registers[15]=32'b0;
+      registers[16]=32'b0;
+      registers[17]=32'b0;
+      registers[18]=32'b0;
+      registers[19]=32'b0;
+      registers[20]=32'b0;
+      registers[21]=32'b0;
+      registers[22]=32'b0;
+      registers[23]=32'b0;
     end
+    always @ (*)
+            begin
+            if(regWrite==1)
+            begin
+                    case(address1)
+                              // 5'b10000 : s0=32'b0;
+                              5'b01000 : registers[9]=write_back;
+                              5'b10001 : registers[10]=write_back;
+                              5'b01001 : registers[11]=write_back;
+                              5'b10010 : registers[12]=write_back;
+                              5'b01010 : registers[13]=write_back;
+                              5'b10011 : registers[14]=write_back;
+                              5'b01011 : registers[15]=write_back;
+                              5'b10100 : registers[16]=write_back;
+                              5'b01100 : registers[17]=write_back;
+                              5'b10101 : registers[18]=write_back;
+                              5'b01101 : registers[19]=write_back;
+                              5'b10110 : registers[20]=write_back;
+                              5'b01110 : registers[21]=write_back;
+                              5'b10111 : registers[22]=write_back;
+                              5'b01111 : registers[23]=write_back;
+                              default : registers[8]=32'b0;
+                  endcase
+                  $display("hula hula  %b %b",write_back,address1);
+                end
+                else
+                begin
+                case(address2)
+                5'b10000 : dataOut1=registers[8];
+                5'b01000 :  dataOut1=registers[9];
+                5'b10001 : dataOut1=registers[10];
+                5'b01001 : dataOut1=registers[11];
+                5'b10010 : dataOut1=registers[12];
+                5'b01010 : dataOut1=registers[13];
+                5'b10011 : dataOut1=registers[14];
+                5'b01011 : dataOut1=registers[15];
+                5'b10100 : dataOut1=registers[16];
+                5'b01100 : dataOut1=registers[17];
+                5'b10101 : dataOut1=registers[18];
+                5'b01101 : dataOut1=registers[19];
+                5'b10110 : dataOut1=registers[20];
+                5'b01110 : dataOut1=registers[21];
+                5'b10111 : dataOut1=registers[22];
+                5'b01111 : dataOut1=registers[23];
+                default : dataOut1=32'b0;
+                endcase
+            case(address3)
+                5'b10000 : dataOut2=registers[8];
+                5'b01000 : dataOut2=registers[9];
+                5'b10001 : dataOut2=registers[10];
+                5'b01001 : dataOut2=registers[11];
+                5'b10010 : dataOut2=registers[12];
+                5'b01010 : dataOut2=registers[13];
+                5'b10011 : dataOut2=registers[14];
+                5'b01011 : dataOut2=registers[15];
+                5'b10100 : dataOut2=registers[16];
+                5'b01100 : dataOut2=registers[17];
+                5'b10101 : dataOut2=registers[18];
+                5'b01101 : dataOut2=registers[19];
+                5'b10110 : dataOut2=registers[20];
+                5'b01110 : dataOut2=registers[21];
+                5'b10111 : dataOut2=registers[22];
+                5'b01111 : dataOut2=registers[23];
+                default : dataOut2=32'b0;
+              endcase
+                end
+                end
 
 endmodule //Registers
