@@ -15,7 +15,7 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
                                 MemW = 0;
                                 MemToReg = 0;
                                 aluSrc = 0;
-                                regDest = 0;
+                                regDest = 1;
                             end
                 6'b100011 : begin
                                 ALUout = 2'b00;
@@ -24,7 +24,7 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
                                 MemToReg = 1;
                                 MemW = 0;
                                 aluSrc = 1;
-                                regDest = 1;
+                                regDest = 0;
                             end
                 6'b101011 : begin
                                 ALUout = 2'b00;
@@ -33,7 +33,7 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
                                 MemToReg = 1;
                                 MemW = 1;
                                 aluSrc = 1;
-                                regDest = 1;
+                                regDest = 0;
                             end
             endcase
         end

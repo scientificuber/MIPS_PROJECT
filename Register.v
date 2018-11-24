@@ -5,6 +5,7 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
     output reg [31:0] dataOut1;
     output reg [31:0] dataOut2;
     reg [31:0] registers[23:0];
+    reg count;
     initial begin
       registers[8]=32'b0;
       registers[9]=32'b0;
@@ -22,10 +23,34 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
       registers[21]=32'b0;
       registers[22]=32'b0;
       registers[23]=32'b0;
+      count=0;
     end
+  //   always @ (write_back) begin
+  //   case(address1)
+  //             // 5'b10000 : s0=32'b0;
+  //             5'b01000 : registers[9]=write_back;
+  //             5'b10001 : registers[10]=write_back;
+  //             5'b01001 : registers[11]=write_back;
+  //             5'b10010 : registers[12]=write_back;
+  //             5'b01010 : registers[13]=write_back;
+  //             5'b10011 : registers[14]=write_back;
+  //             5'b01011 : registers[15]=write_back;
+  //             5'b10100 : registers[16]=write_back;
+  //             5'b01100 : registers[17]=write_back;
+  //             5'b10101 : registers[18]=write_back;
+  //             5'b01101 : registers[19]=write_back;
+  //             5'b10110 : registers[20]=write_back;
+  //             5'b01110 : registers[21]=write_back;
+  //             5'b10111 : registers[22]=write_back;
+  //             5'b01111 : registers[23]=write_back;
+  //             default : registers[8]=32'b0;
+  // endcase
+  // $display("write_back,dest=  %b %b",write_back,address1);
+  //   end
+
     always @ (*)
             begin
-            if(regWrite==1)
+            if(regWrite==1 || (count!=0))
             begin
                     case(address1)
                               // 5'b10000 : s0=32'b0;
@@ -46,7 +71,8 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
                               5'b01111 : registers[23]=write_back;
                               default : registers[8]=32'b0;
                   endcase
-                  $display("hula hula  %b %b",write_back,address1);
+                  count = 0;
+                  $display("write_back,dest=  %b %b",write_back,address1);
                 end
                 else
                 begin
@@ -88,8 +114,10 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
                 5'b01111 : dataOut2=registers[23];
                 default : dataOut2=32'b0;
               endcase
+              count = 1;
+              $display("out2,addr3=  %b %b",dataOut2,address3);
                 end
-                $display("\nregisters %b %b %b %b %b %b %b %b %b %b %b %b %b %b %b %b\n",registers[8],registers[9],registers[10],registers[11],registers[12],
+                $display("\nregisters:\n s0=%b t0=%b\n s1=%b t1=%b\n s2=%b t2=%b\n s3=%b t3=%b\n s4=%b t4=%b\n s5=%b t5=%b\n s6=%b t6=%b\n s7=%b t7=%b\n",registers[8],registers[9],registers[10],registers[11],registers[12],
                 registers[13],registers[14],registers[15],registers[16],registers[17],registers[18],registers[19],registers[20],registers[21],registers[22],
                 registers[23]);
                 end
