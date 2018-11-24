@@ -89,6 +89,9 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
                 default : dataOut2=32'b0;
               endcase
                 end
+                $display("\nregisters %b %b %b %b %b %b %b %b %b %b %b %b %b %b %b %b\n",registers[8],registers[9],registers[10],registers[11],registers[12],
+                registers[13],registers[14],registers[15],registers[16],registers[17],registers[18],registers[19],registers[20],registers[21],registers[22],
+                registers[23]);
                 end
 
 endmodule //Registers
