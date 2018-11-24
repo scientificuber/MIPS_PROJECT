@@ -25,7 +25,7 @@ module TB_3x3_Multiplication;
         repeat(182) #10 clk = ~clk;
     end
 
-    always @ ( posedge clk ) begin
+    always @ (posedge clk ) begin
         if(pc!=356) pc = pc + 4;
         $display("%d \t%d \t%d\n%d \t%d \t%d\n%d \t%d \t%d\n", d11, d12, d13, d21, d22, d23, d31, d32, d33);
         // else pc = 356;

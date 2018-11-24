@@ -21,7 +21,7 @@ reg [31:0] matrix3[8:0];
 	matrix3[7]=32'd0;
 	matrix3[8]=32'd0;
 	end*/
-always@(*)
+always@(*)//posedge done8)
 begin
 matrix1[0]=32'd1;
 matrix1[1]=32'd2;

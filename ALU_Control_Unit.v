@@ -1,10 +1,8 @@
 module aluControlUnit(aluOp, f6, out4);
     input [1:0] aluOp;
     input [5:0] f6;
-
     output reg [3:0] out4;
-
-    always @ (*)
+    always @ (*)//posedge
         begin
             case(aluOp)
                 2'b00 : out4=4'b0010;

@@ -3,7 +3,6 @@ input [31:0]address;
 output  [31:0] data_out;
 reg [31:0]memory[360:0];
 initial begin
-
 		//load word t0 512(s0)
 		memory[0]=32'b100011_10000_01000_0000001000000000;
 		//load word t1 768(s0)

@@ -4,13 +4,13 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
     output reg [1:0] ALUout;
     output reg MemR, MemW, RegW, MemToReg, aluSrc, regDest;
 
-    always @ (*)
+    always @ (*)//posedge
         begin
             //$display("opcode: %b", opcode);
             case(opcode)
                 6'b000000 : begin
                                 ALUout = 2'b10;
-                                RegW = 0;
+                                RegW = 1;
                                 MemR = 0;
                                 MemW = 0;
                                 MemToReg = 0;

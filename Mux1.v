@@ -4,7 +4,7 @@ input sel;
 output reg [4:0] out;
 // assign out=(sel==1'b0)?data1:data2;
 // /*
-always @ (*) begin
+always @ (*)begin//posedge  begin
     case(sel)
         0 : out = data1;
         1 : out = data2;

@@ -25,28 +25,6 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
       registers[23]=32'b0;
       count=0;
     end
-  //   always @ (write_back) begin
-  //   case(address1)
-  //             // 5'b10000 : s0=32'b0;
-  //             5'b01000 : registers[9]=write_back;
-  //             5'b10001 : registers[10]=write_back;
-  //             5'b01001 : registers[11]=write_back;
-  //             5'b10010 : registers[12]=write_back;
-  //             5'b01010 : registers[13]=write_back;
-  //             5'b10011 : registers[14]=write_back;
-  //             5'b01011 : registers[15]=write_back;
-  //             5'b10100 : registers[16]=write_back;
-  //             5'b01100 : registers[17]=write_back;
-  //             5'b10101 : registers[18]=write_back;
-  //             5'b01101 : registers[19]=write_back;
-  //             5'b10110 : registers[20]=write_back;
-  //             5'b01110 : registers[21]=write_back;
-  //             5'b10111 : registers[22]=write_back;
-  //             5'b01111 : registers[23]=write_back;
-  //             default : registers[8]=32'b0;
-  // endcase
-  // $display("write_back,dest=  %b %b",write_back,address1);
-  //   end
 
     always @ (*)
             begin
