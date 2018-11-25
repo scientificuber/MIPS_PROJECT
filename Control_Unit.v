@@ -10,7 +10,7 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
             case(opcode)
                 6'b000000 : begin
                                 ALUout = 2'b10;
-                                RegW = 0;
+                                RegW = 1;
                                 MemR = 0;
                                 MemW = 0;
                                 MemToReg = 0;
