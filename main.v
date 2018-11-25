@@ -19,7 +19,7 @@ generate for(i=0;i<1;i=i+1)begin
 instruction_memory uut1(pc,instruction);
 controlUnit uut2(instruction,instruction[31:26],Aluout,MemR,MemW,RegW,MemToReg,alusrc,regdest);
 mux1 uut3(instruction[20:16],instruction[15:11],regdest,dest);
-decoder uut4(RegW,write_back,dest,instruction[25:21],instruction[20:16],out1,out2);
+decoder uut4(pc,RegW,write_back,dest,instruction[25:21],instruction[20:16],out1,out2);
 mux2 uut5(out2,signExtended,alusrc,b);
 aluControlUnit uut6(Aluout,instruction[5:0],c_line);
 aluMain uut7(c_line,out1,b,out_alu);

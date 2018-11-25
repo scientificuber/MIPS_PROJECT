@@ -12,6 +12,6 @@ module aluControlUnit(aluOp, f6, out4);
                             6'b011000 : out4 = 4'b0100;
                         endcase
             endcase
-            //$display("aluOp, out4, f6 = %b,%b,%b", aluOp, out4, f6);
+            // $display("aluControlUnit");//aluOp, out4, f6 = %b,%b,%b", aluOp, out4, f6);
         end
 endmodule

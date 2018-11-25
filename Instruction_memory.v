@@ -203,6 +203,7 @@ initial begin
 		memory[356]=32'b101011_10000_01110_0000000100100000;
 		//
 		// */
+		// $display("instruction_memory");
 end
 assign data_out=memory[address];
 // always @ ( * ) begin

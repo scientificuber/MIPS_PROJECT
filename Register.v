@@ -1,11 +1,12 @@
-module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut2);
+module Registers(pc,regWrite,write_back,address1,address2,address3,dataOut1,dataOut2);
     input regWrite;
+    input [31:0] pc;
     input [4:0] address1,address2,address3;
     input [31:0] write_back;
     output reg [31:0] dataOut1;
     output reg [31:0] dataOut2;
     reg [31:0] registers[23:0];
-    reg count;
+    reg [31:0] count;
     initial begin
       registers[8]=32'b0;
       registers[9]=32'b0;
@@ -28,7 +29,7 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
 
     always @ (*)
             begin
-            if(regWrite==1 || (count!=0))
+            if(regWrite==1)
             begin
                     case(address1)
                               // 5'b10000 : s0=32'b0;
@@ -52,8 +53,6 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
                   count = 0;
                   $display("write_back,dest=  %b %b",write_back,address1);
                 end
-                else
-                begin
                 case(address2)
                 5'b10000 : dataOut1=registers[8];
                 5'b01000 :  dataOut1=registers[9];
@@ -92,9 +91,8 @@ module Registers(regWrite,write_back,address1,address2,address3,dataOut1,dataOut
                 5'b01111 : dataOut2=registers[23];
                 default : dataOut2=32'b0;
               endcase
-              count = 1;
-              $display("out2,addr3=  %b %b",dataOut2,address3);
-                end
+              // count = 1;
+              $display("out1,out2,addr2,addr3= %d %d %d %d",dataOut1,dataOut2,address2,address3);
                 $display("\nregisters:\n s0=%b t0=%b\n s1=%b t1=%b\n s2=%b t2=%b\n s3=%b t3=%b\n s4=%b t4=%b\n s5=%b t5=%b\n s6=%b t6=%b\n s7=%b t7=%b\n",registers[8],registers[9],registers[10],registers[11],registers[12],
                 registers[13],registers[14],registers[15],registers[16],registers[17],registers[18],registers[19],registers[20],registers[21],registers[22],
                 registers[23]);

@@ -10,7 +10,7 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
             case(opcode)
                 6'b000000 : begin
                                 ALUout = 2'b10;
-                                RegW = 1;
+                                RegW = 0;
                                 MemR = 0;
                                 MemW = 0;
                                 MemToReg = 0;
@@ -36,5 +36,6 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
                                 regDest = 0;
                             end
             endcase
+            // $display("controlUnit");
         end
 endmodule
