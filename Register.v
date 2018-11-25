@@ -29,7 +29,7 @@ module Registers(pc,regWrite,write_back,address1,address2,address3,dataOut1,data
 
     always @ (*)
             begin
-            if(regWrite==1)
+            if(regWrite==1 && count!=pc)
             begin
                     case(address1)
                               // 5'b10000 : s0=32'b0;
@@ -50,7 +50,7 @@ module Registers(pc,regWrite,write_back,address1,address2,address3,dataOut1,data
                               5'b01111 : registers[23]=write_back;
                               default : registers[8]=32'b0;
                   endcase
-                  count = 0;
+                  count = pc;
                   $display("write_back,dest=  %b %b",write_back,address1);
                 end
                 case(address2)
@@ -91,7 +91,7 @@ module Registers(pc,regWrite,write_back,address1,address2,address3,dataOut1,data
                 5'b01111 : dataOut2=registers[23];
                 default : dataOut2=32'b0;
               endcase
-              // count = 1;
+              count = 0;
               $display("out1,out2,addr2,addr3= %d %d %d %d",dataOut1,dataOut2,address2,address3);
                 $display("\nregisters:\n s0=%b t0=%b\n s1=%b t1=%b\n s2=%b t2=%b\n s3=%b t3=%b\n s4=%b t4=%b\n s5=%b t5=%b\n s6=%b t6=%b\n s7=%b t7=%b\n",registers[8],registers[9],registers[10],registers[11],registers[12],
                 registers[13],registers[14],registers[15],registers[16],registers[17],registers[18],registers[19],registers[20],registers[21],registers[22],
