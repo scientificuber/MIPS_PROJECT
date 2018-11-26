@@ -6,5 +6,5 @@ For changing the values, change them in Main_memory.v file.
 
 Project Memebers:
   Sushranth P. Hebbar,
-  Padumathi SaiKiran Reddy,
+  Padumathi SaiKiran Reddy, 
   Anurag Pendyala
