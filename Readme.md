@@ -1,7 +1,10 @@
-This Project is Implementation of Mips Processor in verilog which does 
-3 x 3 Matrix Multiplication. To change Matrix see file Main_memory.v .
+This Project is an implementation of the MIPS Processor in verilog.
+
+This only computes the 3 x 3 Matrix Multiplication.
+
+For changing the values, change them in Main_memory.v file.
 
 Project Memebers:
-sushranth
-Anurag
-saikiran.
+    - Sushranth P. Hebbar
+    - Anurag Pendyala
+    - Padumathi SaiKiran Reddy

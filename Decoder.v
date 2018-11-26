@@ -6,8 +6,10 @@ module decoder(pc,regwrite,write_back,dest,address1,address2,out1,out2);
     output [31:0] out1,out2;
 
 Registers uut1(pc,regwrite,write_back,dest,address1,address2,out1,out2);
-always@(*)//posedge done3)
-begin
-$display("\nwrite_back = %b\n",write_back);
-end
-    endmodule
+    /*
+    always@(*)
+        begin
+            $display("\nwrite_back = %b\n",write_back);
+        end
+    */
+endmodule

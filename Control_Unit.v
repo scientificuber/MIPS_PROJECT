@@ -4,9 +4,8 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
     output reg [1:0] ALUout;
     output reg MemR, MemW, RegW, MemToReg, aluSrc, regDest;
 
-    always @ (*)//posedge
+    always @ (*)
         begin
-            //$display("opcode: %b", opcode);
             case(opcode)
                 6'b000000 : begin
                                 ALUout = 2'b10;
@@ -36,6 +35,5 @@ module controlUnit(instruction, opcode, ALUout, MemR, MemW, RegW, MemToReg, aluS
                                 regDest = 0;
                             end
             endcase
-            // $display("controlUnit");
         end
 endmodule

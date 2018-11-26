@@ -3,6 +3,7 @@ input [31:0]address;
 output  [31:0] data_out;
 reg [31:0]memory[360:0];
 initial begin
+
 		//load word t0 512(s0)
 		memory[0]=32'b100011_10000_01000_0000001000000000;
 		//load word t1 768(s0)
@@ -29,7 +30,6 @@ initial begin
 		//store word t6 256(s0)
 		memory[44]=33'b101011_10000_01110_0000000100000000;
 		//
-		// /*
 		//load word t1 780(s0)
 		memory[48]=32'b100011_10000_01001_0000001100001100;
 		//load word t3 784(s0)
@@ -202,12 +202,15 @@ initial begin
 		//store t6 288(s0)
 		memory[356]=32'b101011_10000_01110_0000000100100000;
 		//
-		// */
-		// $display("instruction_memory");
 end
+
 assign data_out=memory[address];
-// always @ ( * ) begin
-// 	data_out = memory[address];
-// 	$display("%b", data_out);
-// end
+
+/*
+always @ ( * ) begin
+	data_out = memory[address];
+	$display("%b", data_out);
+end
+*/
+
 endmodule

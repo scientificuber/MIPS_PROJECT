@@ -6,11 +6,7 @@ module aluMain(controlLines, a, b, out);
         case(controlLines)
             4'b0010 : out = a + b;
             4'b0011 : out = a - b;
-            4'b0100 : begin
-              out = a * b;
-              $display("\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-              end
+            4'b0100 : out = a * b;
         endcase
-        $display("ALUOUT, a, b = %d, %d,%d", out,a,b);
     end
 endmodule

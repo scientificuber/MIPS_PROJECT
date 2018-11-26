@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+// `timescale 1ns / 1ps
 module TB_3x3_Multiplication;
     reg [31:0] pc;
     reg clk;
@@ -19,17 +19,20 @@ module TB_3x3_Multiplication;
     );
 
     initial begin
-        $dumpfile("mip3x3m.vcd");
+        $dumpfile("graph.vcd");
         $dumpvars(0, TB_3x3_Multiplication);
-        clk = 0; pc = -4; #10;
-        repeat(182) #10 clk = ~clk;
+        clk = 0; pc = 0; #10;
+        repeat(200) #10 clk = ~clk;
     end
 
-    always @ (posedge clk ) begin
-        if(pc!=356) pc = pc + 4;
-        $display("%d \t%d \t%d\n%d \t%d \t%d\n%d \t%d \t%d\n", d11, d12, d13, d21, d22, d23, d31, d32, d33);
-        // else pc = 356;
-        //$display("pc = %d", pc);
-        //$display("--------------------------------------------------------------\n");
+    always @ (posedge clk) begin
+    if(pc!=356)
+        begin
+            $display("\tPC = %d\n", pc);
+            $display("\t%d %d %d\n\t%d %d %d\n\t%d %d %d", d11, d12, d13, d21, d22, d23, d31, d32, d33);
+            $display("\t-----------------------------------\n");
+            pc = pc + 4;
+        end
+
     end
 endmodule
