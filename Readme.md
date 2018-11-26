@@ -5,6 +5,6 @@ This only computes the 3 x 3 Matrix Multiplication.
 For changing the values, change them in Main_memory.v file.
 
 Project Memebers:
-    Sushranth P. Hebbar
-    Anurag Pendyala
-    Padumathi SaiKiran Reddy
+Sushranth P. Hebbar
+Anurag Pendyala
+Padumathi SaiKiran Reddy
